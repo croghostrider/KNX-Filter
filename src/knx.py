@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from typing import Any, NamedTuple
 
+
 class Telegram(NamedTuple):
     src: str
     dst: str

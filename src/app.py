@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-import re
-import time
 import xml.etree.ElementTree as ET
 
 import gui
 import knx
-import xmlHandler
+import xml_handler
 
 group_addresses = [
     "31/1/100",
@@ -32,9 +30,14 @@ MODE_CHANGE = 2
 
 
 def filter_teregramms(search_filter: "list[str]", filter_mode: int) -> None:
+    """ghjklölkjhgfghjkjhgfdfjhgfertzu ggzuiuztretzu gzuztrthjhgf.
+
+    dggzuiuztretzu
+    '0/ggzuiuztretzu/14'
+    """
     count_found_telegramms = 0
     count_removed_telegramms = 0
-    myroot = xmlHandler.get_xml(r"tests\sampel-1.xml")
+    myroot = xml_handler.get_xml(r"tests\sampel-1.xml")
     output_xml = ET.Element("CommunicationLog")
 
     for child in myroot:
@@ -52,11 +55,16 @@ def filter_teregramms(search_filter: "list[str]", filter_mode: int) -> None:
     print("total telegramms:", count_removed_telegramms + count_found_telegramms)
     print("found: ", count_found_telegramms)
     print("removed: ", count_removed_telegramms)
-    xmlHandler.create_xml(output_xml, "filter_teregramms2.xml")
+    xml_handler.create_xml(output_xml, "filter_teregramms2.xml")
 
 
 def filter_groupaddress_change(search_filter: "list[str]", filter_mode: int) -> None:
-    myroot = xmlHandler.get_xml("filter_teregramms2.xml")
+    """ghjklölkjhgfghjkjhgfdfjhgfertzu ggzuiuztretzu gzuztrthjhgf.
+
+    dggzuiuztretzu
+    '0/ggzuiuztretzu/14'
+    """
+    myroot = xml_handler.get_xml("filter_teregramms2.xml")
     output_xml = ET.Element("CommunicationLog")
     group_values: "dict[str, bytearray]" = {}
     group_values_old: "dict[str, bytearray]" = {}
@@ -78,36 +86,18 @@ def filter_groupaddress_change(search_filter: "list[str]", filter_mode: int) -> 
         else:
             output_xml.append(child)
 
-    xmlHandler.create_xml(output_xml, "filter_on_change_teregramms.xml")
+    xml_handler.create_xml(output_xml, "filter_on_change_teregramms.xml")
 
 
 # helper function to perform sort
 
 
-def sort_human(test_string):
-    return list(map(int, re.findall(r"\d+", test_string)))
-
-
-def find_filter_objekts():
-    count_found_groupaddresses = 0
-    count_found_physicaladdresses = 0
-    myroot = xmlHandler.get_xml(r"tests\sampel-1.xml")
-    output_xml = ET.Element("CommunicationLog")
-    thisset = set()
-    mylist = []
-
-    for child in myroot:
-        if child.tag == "{http://knx.org/xml/telegrams/01}Telegram":
-            hex_val = child.attrib["RawData"]
-            output = knx.decode(bytearray.fromhex(hex_val[8:]))
-            thisset.add(output[1])
-    mylist = list(thisset)
-    # printing result
-    mylist.sort(key=sort_human)
-    gui.create_gui(mylist)
-
-
 def user_input() -> "tuple[int, int]":
+    """ghjklölkjhgfghjkjhgfdfjhgfertzu ggzuiuztretzu gzuztrthjhgf.
+
+    dggzuiuztretzu
+    '0/ggzuiuztretzu/14'
+    """
     print("What do you want filter?")
     print("Please choose:")
     print("1) Group address")
@@ -137,6 +127,11 @@ def user_input() -> "tuple[int, int]":
 
 
 def treeview_sort_column(tv, col, reverse):
+    """ghjklölkjhgfghjkjhgfdfjhgfertzu ggzuiuztretzu gzuztrthjhgf.
+
+    dggzuiuztretzu
+    '0/ggzuiuztretzu/14'
+    """
     l = [(tv.set(k, col), k) for k in tv.get_children("")]
     l.sort(key=lambda t: int(t[0]), reverse=reverse)
     for index, (val, k) in enumerate(l):
@@ -144,17 +139,24 @@ def treeview_sort_column(tv, col, reverse):
 
 
 def init() -> None:
-    # set_filter, set_mode = user_input()
-    start = time.time()
-    # if set_mode == MODE_TELEGRAMM:
-    #     filter_teregramms(group_addresses, set_filter)
-    # if set_mode == MODE_CHANGE:
-    #     filter_groupaddress_change(group_addresses, set_filter)
+    """ghjklölkjhgfghjkjhgfdfjhgfertzu ggzuiuztretzu gzuztrthjhgf.
 
-    find_filter_objekts()
-    end = time.time()
-    total_time = end - start
-    print("needed time: ", total_time)
+    dggzuiuztretzu
+    '0/ggzuiuztretzu/14'
+    """
+    gui.init()
+    # # set_filter, set_mode = user_input()
+    # start = time.time()
+    # # if set_mode == MODE_TELEGRAMM:
+    # #     filter_teregramms(group_addresses, set_filter)
+    # # if set_mode == MODE_CHANGE:
+    # #     filter_groupaddress_change(group_addresses, set_filter)
+
+    # find_filter_objekts()
+
+    # end = time.time()
+    # total_time = end - start
+    # print("needed time: ", total_time)
 
 
 init()
