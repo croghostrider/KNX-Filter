@@ -1,0 +1,12 @@
+<CommunicationLog xmlns="http://knx.org/xml/telegrams/01">
+  <Telegram Timestamp="2022-09-21T11:18:57.5177063Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C70302010700803F1581000000" />
+  <Telegram Timestamp="2022-09-21T11:19:03.04766Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C70302010700803F1584000000" />
+  <Telegram Timestamp="2022-09-21T11:19:05.2933904Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C70302010700803F1580000000" />
+  <Telegram Timestamp="2022-09-21T11:19:11.0593123Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8C04B020201070080B30403020000" />
+  <Telegram Timestamp="2022-09-21T11:19:25.2861759Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C70302010700803D1581000000" />
+  <Telegram Timestamp="2022-09-21T11:19:26.310242Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C70302010700803D1584000000" />
+  <Telegram Timestamp="2022-09-21T11:19:27.5736882Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C70302010700803D1580000000" />
+  <Telegram Timestamp="2022-09-21T11:19:29.5200965Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C7030201070080391581000000" />
+  <Telegram Timestamp="2022-09-21T11:19:30.453572Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C7030201070080391584000000" />
+  <Telegram Timestamp="2022-09-21T11:19:31.4774907Z" Service="L_Data.ind" FrameFormat="CommonEmi" RawData="2900B8E0C7030201070080391580000000" />
+</CommunicationLog>

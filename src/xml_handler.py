@@ -5,17 +5,22 @@ import xml.etree.ElementTree as ET
 import knx
 import xml_handler
 
+import glob
 
-def get_xml(file: str) -> ET.Element:
-    """ghjklölkjhgfghjkjhgfdfjhgfertzu ggzuiuztretzu gzuztrthjhgf.
 
-    dggzuiuztretzu
-    '0/ggzuiuztretzu/14'
-    """
+def get_xmls(files):
+    xml_files = glob.glob(files +"/*.xml")
+    xml_element_tree = None
     ET.register_namespace("", "http://knx.org/xml/telegrams/01")
-    mytree = ET.parse(file)
-    return mytree.getroot()
-
+    for xml_file in xml_files:
+        data = ET.parse(xml_file).getroot()
+        # print ElementTree.tostring(data)
+        if xml_element_tree is None:
+            xml_element_tree = data 
+        else:
+            xml_element_tree.extend(data) 
+    if xml_element_tree is not None:
+        return xml_element_tree
 
 def create_xml(file: ET.Element, name: str) -> None:
     """ghjklölkjhgfghjkjhgfdfjhgfertzu ggzuiuztretzu gzuztrthjhgf.
